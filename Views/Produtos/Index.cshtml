@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ExemploEF.Models.Produto>
+
+@{
+    ViewData["Title"] = "Lista de Produtos";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center fw-bold">Lista de Produtos</h1>
+    <p><a asp-action="Create" class="btn btn-success">Criar Novo Produto</a></p>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Nome)</th>
+                <th>@Html.DisplayNameFor(model => model.Estoque)</th>
+                <th>@Html.DisplayNameFor(model => model.categoria)</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Estoque)</td>
+                    <td>@Html.DisplayFor(modelItem => item.categoria.Nome)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ProdutoId" class="btn btn-warning">Editar</a>
+                        <a asp-action="Details" asp-route-id="@item.ProdutoId" class="btn btn-info">Detalhes</a>
+                        <a asp-action="Delete" asp-route-id="@item.ProdutoId" class="btn btn-danger">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
